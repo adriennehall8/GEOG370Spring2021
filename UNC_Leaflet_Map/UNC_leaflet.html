@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My First Map</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
+
+   <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+   crossorigin=""></script>
+
+   <script src = "./data/old_well_4326.geojson"></script>
+    <style>
+        body {background-color:azure;}
+        h4 {
+            font-family: 'Gill Sans';
+            font-weight: lighter;
+            font-size: x-large;
+            color: rgb(16,38,32);
+            position: relative;
+            text-align: left;
+        }
+    </style>
+
+</head>
+<body>
+    <h4>basic leaflet map</h4>
+    <div id="mapid"></div>
+    <style>
+        #mapid{ width: 1000px; height: 600px;}
+    </style>
+
+    <script>
+        var map = L.map('mapid').setView([35.9123342,-79.0507095], 16);
+        
+        var CartoDB_Positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+	    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+	    subdomains: 'abcd',
+	    maxZoom: 19
+        }).addTo(map)
+
+        // L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+        //     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+	    //     subdomains: 'abcd',
+        // }).addTo(map)
+        
+        var MyAvatar = L.icon({
+            iconUrl: 'MyAvatar.png',
+            iconSize: [150,100],
+            popupAnchor: [0,0]
+        });
+
+        var oldwellPopup = "The Old Well <br/><img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoljDXv1y8T7hqd3vuTTw-PhAaXvVea-dd3w&usqp=CAU'width='100px'/>";
+        var geogPopup = "Department of Geography <br/><img src='https://geography.sites.unc.edu/wp-content/uploads/sites/140/2014/04/saunders-hall.jpg'width='100px'/>";
+        var coatesPopup = "Coates Building <br/><img src='https://cms.concept3d.com/map/lib/image-cache/i.php?mapId=111&image=111/2.JPG&w=900&h=508&r=1'width='100px'/>";
+
+        L.marker([35.911271, -79.049807], {icon: MyAvatar}).addTo(map)
+            .bindPopup(geogPopup)
+            //.openPopup();
+
+        L.marker([35.9120772,-79.0534188], {icon: MyAvatar}).addTo(map)
+            .bindPopup(oldwellPopup)
+            //.openPopup();
+
+        L.marker([35.915228,-79.0536759], {icon: MyAvatar}).addTo(map)
+            .bindPopup(coatesPopup)
+            //.openPopup();
+        
+        // L.geoJSON(uncwell).addTo(map)
+
+        // var uncIcon = L.icon({ // notice the L.icon which is a Leaflet object with properties
+        // iconUrl: 'https://www.clipartkey.com/mpngs/m/280-2809737_old-well-graphic-transparent-unc-old-well-logo.png',
+        // // this points to a jpg image obtained from the internet
+        // iconSize: [50,50], // size of the icon
+        // popupAnchor: [0,0] // where the icon is located relative to the lat lon of the point.
+        // });
+
+        // var customPopup = "The Old Well <br/><img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoljDXv1y8T7hqd3vuTTw-PhAaXvVea-dd3w&usqp=CAU'width='100px'/>";
+
+        // L.geoJSON(uncwell, { // a
+        // pointToLayer: function (feature, latlng) { // b
+        // return L.marker(latlng, {icon: uncIcon});}}) // c
+        // .bindPopup(customPopup) // d
+        // .addTo(map); //
+
+    </script>
+
+    
+</body>
+</html>
