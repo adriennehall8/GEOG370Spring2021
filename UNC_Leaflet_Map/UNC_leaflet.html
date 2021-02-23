@@ -42,11 +42,6 @@
 	    subdomains: 'abcd',
 	    maxZoom: 19
         }).addTo(map)
-
-        // L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-        //     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-	    //     subdomains: 'abcd',
-        // }).addTo(map)
         
         var MyAvatar = L.icon({
             iconUrl: 'MyAvatar.png',
@@ -70,17 +65,37 @@
             .bindPopup(coatesPopup)
             //.openPopup();
         
-        // L.geoJSON(uncwell).addTo(map)
+        
+        //*extra credit: create a red polygon from an array of LatLng points
+        var latlngs = [[35.910769, -79.054222],[35.913115, -79.055692],[35.915574, -79.049244],[35.913219, -79.047967]];
 
+        var polygon = L.polygon(latlngs, {color: 'yellow'}).addTo(map);
+
+        // zoom the map to the polygon
+        map.fitBounds(polygon.getBounds());
+
+        // *extra credit: create a colored polyline from an array of LatLng points
+        var latlngs = [
+            [35.911271, -79.049807],
+            [35.9120772,-79.0534188],
+            [35.915228,-79.0536759]
+        ];
+
+        var polyline = L.polyline(latlngs, {color: 'orange'}).addTo(map);
+
+        // zoom the map to the polyline
+        map.fitBounds(polyline.getBounds());
+
+        // saving template on how to perform the above using a geoJSON instead of the marker
         // var uncIcon = L.icon({ // notice the L.icon which is a Leaflet object with properties
         // iconUrl: 'https://www.clipartkey.com/mpngs/m/280-2809737_old-well-graphic-transparent-unc-old-well-logo.png',
-        // // this points to a jpg image obtained from the internet
         // iconSize: [50,50], // size of the icon
         // popupAnchor: [0,0] // where the icon is located relative to the lat lon of the point.
         // });
 
         // var customPopup = "The Old Well <br/><img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoljDXv1y8T7hqd3vuTTw-PhAaXvVea-dd3w&usqp=CAU'width='100px'/>";
-
+        
+        // L.geoJSON(uncwell).addTo(map)
         // L.geoJSON(uncwell, { // a
         // pointToLayer: function (feature, latlng) { // b
         // return L.marker(latlng, {icon: uncIcon});}}) // c
