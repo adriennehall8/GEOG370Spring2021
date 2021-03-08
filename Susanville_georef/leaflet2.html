@@ -48,7 +48,7 @@
   <div id="map"></div>
   <script>
       var map = L.map('map').setView([40.426702513187706, -120.67350075600334], 14);
-      
+
       // create variables for tile layers and add tiles to map
       var ESRI = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
 	    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
@@ -70,51 +70,51 @@
       // icons, popups, and markers
 
       // first icon, pop-up, and marker
-      var icon1 = L.icon({
-            iconUrl: 'https://www.flaticon.com/premium-icon/icons/svg/3086/3086003.svg',
-            iconSize: [50,50],
-            popupAnchor: [0,0]
-        });
+      // var icon1 = L.icon({
+      //       iconUrl: 'https://www.flaticon.com/premium-icon/icons/svg/3086/3086003.svg',
+      //       iconSize: [50,50],
+      //       popupAnchor: [0,0]
+      //   });
 
-      var pop1 = "Susan River Trail is a 1.2 mile point to point trail that follows the Susan River <br/><img src='https://lh3.googleusercontent.com/proxy/rORH_I4QPv1ghZY7a7CtOGCi15DAnaBvB3u6OHN7PDnh_DiDuYBMYZGPz8Ht15B8PAazRn6YeX6evmKY1IOytFYAcfTZdkchIWSyPX5BilbshuxeXEVWJWDromFlfMgd2_Tw'width='100px'/>";
-      
+      var pop1 = "Susan River Trail is a 1.2 mile point to point trail that follows the Susan River <br/><img src='http://pics4.city-data.com/cpicc/cfiles15714.jpg'width='100px'/>";
+
       var SusanRiver = L.marker([40.413413,-120.6528416], {
-        icon: icon1,
+        // icon: icon1,
         pointToLayer: function (feature, latlng) {
         return L.marker(latlng);}})
-      .bindPopup(pop1) 
+      .bindPopup(pop1)
       .addTo(map);
-      
+
       // second icon, pop-up, and marker
-      var icon2 = L.icon({
-            iconUrl: 'https://www.flaticon.com/premium-icon/icons/svg/3433/3433432.svg',
-            iconSize: [50,50],
-            popupAnchor: [0,0]
-        });
+      // var icon2 = L.icon({
+      //       iconUrl: 'https://www.flaticon.com/premium-icon/icons/svg/3433/3433432.svg',
+      //       iconSize: [50,50],
+      //       popupAnchor: [0,0]
+      //   });
 
       var pop2 = "Lassen-Modoc Unit (LMU) of CAL Fire is one of many conservation fire camps throughout the state. These units use prison labor to fire wildfires and other fire-related concerns. This unit services several counties in the northeastern region of the state: Lassen, Modoc, Plumas, and portions of Shasta and Siskiyou counties. <br/><img src='https://media.abc10.com/assets/KXTV/images/0de29932-5975-4d7f-aaff-b7de9a349e0c/0de29932-5975-4d7f-aaff-b7de9a349e0c_1140x641.jpg'width='100px'/>";
-      
+
       var Fire = L.marker([40.423863,-120.6784568], {
-        icon: icon2,
+        // icon: icon2,
         pointToLayer: function (feature, latlng) {
         return L.marker(latlng);}})
-      .bindPopup(pop2) 
+      .bindPopup(pop2)
       .addTo(map);
 
       // third
-      var icon3 = L.icon({
-            iconUrl: 'https://www.flaticon.com/svg/vstatic/svg/3079/3079182.svg?token=exp=1614198677~hmac=ef339842cd515c29d6ed8bd89140743c',
-            iconSize: [50,50],
-            popupAnchor: [0,0]
-        });
+      // var icon3 = L.icon({
+      //       iconUrl: 'https://www.flaticon.com/svg/vstatic/svg/3079/3079182.svg?token=exp=1614198677~hmac=ef339842cd515c29d6ed8bd89140743c',
+      //       iconSize: [50,50],
+      //       popupAnchor: [0,0]
+      //   });
 
       var pop3 = "What used to be my great great grandmother's old house in Susanville. It was illegally demolished and cleared by the Fire Department. <br/><img src='https://geo0.ggpht.com/cbk?panoid=iMEe_R69MZwGmebshEeHKw&output=thumbnail&cb_client=search.gws-prod.gps&thumb=2&w=408&h=240&yaw=202.98352&pitch=0&thumbfov=100'width='100px'/>";
-      
+
       var House = L.marker([40.421554,-120.6566157], {
-        icon: icon3,
+        // icon: icon3,
         pointToLayer: function (feature, latlng) {
         return L.marker(latlng);}})
-      .bindPopup(pop3) 
+      .bindPopup(pop3)
       .addTo(map);
 
       // create a variable called "Markers" that stores all the markers to be controlled in layer controls
